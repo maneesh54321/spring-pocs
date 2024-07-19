@@ -1,9 +1,11 @@
 package singh.maneesh.http;
 
 import java.lang.reflect.Method;
+import java.lang.reflect.Proxy;
 import org.springframework.core.annotation.AnnotatedElementUtils;
 import singh.maneesh.http.annotation.HttpExchange;
 import singh.maneesh.http.annotation.HttpExchangeClient;
+import singh.maneesh.http.proxy.RestClientProxy;
 
 public class ClientBuilder {
 
@@ -23,11 +25,12 @@ public class ClientBuilder {
 			}
 			clientMetadata.setMethodMetadataList(clientMethodMetadata);
 			System.out.println(clientMetadata);
+			T proxyInstance = (T) Proxy.newProxyInstance(
+					this.getClass().getClassLoader(),
+					new Class[]{clazz},
+					new RestClientProxy(clientMetadata));
+			return proxyInstance;
 		}
-//		Optional<Annotation> maybeDeclarativeClientAnn = checkIfDeclarativeClient(clazz);
-//		if(maybeDeclarativeClientAnn.isPresent()) {
-//			Annotation declarativeClientAnn = maybeDeclarativeClientAnn.get();
-//		}
 		return null;
 	}
 

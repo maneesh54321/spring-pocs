@@ -9,7 +9,9 @@ public class DeclarativeHttpClientApplication {
 
 	public static void main(String[] args) {
 //		SpringApplication.run(DeclarativeHttpClientApplication.class, args);
-		new ClientBuilder().buildClient(HelloClient.class);
+		HelloClient helloClient = new ClientBuilder().buildClient(HelloClient.class);
+		String output = helloClient.hello("Maneesh");
+		System.out.println(output);
 	}
 
 }
