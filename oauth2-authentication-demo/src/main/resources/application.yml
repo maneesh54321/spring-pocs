@@ -1,0 +1,19 @@
+spring:
+    application:
+        name=oauth2-authentication-demo:
+    security:
+        oauth2:
+            client:
+                registration:
+                    # Github
+                    github:
+                        client-id: Ov23litRxnZ3kbNgEuts
+                        client-secret: b87114d3921800f2c046874b078cf8ab1fe9803d
+                        scope: openid
+
+# Logging Config
+logging:
+    level:
+        org.springframework:
+            security: TRACE
+            web.client.RestTemplate: DEBUG

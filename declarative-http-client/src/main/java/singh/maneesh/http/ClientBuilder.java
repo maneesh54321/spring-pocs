@@ -61,7 +61,7 @@ public class ClientBuilder {
 					this.getClass().getClassLoader(),
 					new Class[]{clazz},
 					new RestClientProxy(clientMetadata));
-			return (T) object;
+			return clazz.cast(object);
 		}
 		return null;
 	}
