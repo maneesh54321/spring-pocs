@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.ms</groupId>
-	<artifactId>posts-service</artifactId>
+	<artifactId>service-discovery</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>posts-service</name>
-	<description>Service for serving fake posts</description>
+	<name>service-discovery</name>
+	<description>Service discovery</description>
 	<url/>
 	<licenses>
 		<license/>
@@ -33,11 +33,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
+			<artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
 		</dependency>
 
 		<dependency>

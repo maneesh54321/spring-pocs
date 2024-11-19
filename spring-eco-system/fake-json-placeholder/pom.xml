@@ -12,6 +12,7 @@
         <module>posts-service</module>
         <module>comments-service</module>
         <module>api-gateway</module>
+        <module>service-discovery</module>
     </modules>
 
 </project>

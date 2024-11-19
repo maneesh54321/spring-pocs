@@ -7,14 +7,18 @@ spring:
       mvc:
         routes:
           - id: posts-route
-            uri: ${POSTS_SERVICE_URL:http://localhost:8081}
+#            uri: ${POSTS_SERVICE_URL:http://localhost:8081}
+            uri: lb://posts-service
             predicates:
               - Path=/posts/**
 
           - id: comments-route
-            uri: ${COMMENTS_SERVICE_URL:http://localhost:8082}
+#            uri: ${COMMENTS_SERVICE_URL:http://localhost:8082}
+            uri: lb://comments-service
             predicates:
               - Path=/comments/**
 
 server:
   port: 8080
+
+eureka.client.serviceUrl.defaultZone: http://localhost:8761/eureka/
