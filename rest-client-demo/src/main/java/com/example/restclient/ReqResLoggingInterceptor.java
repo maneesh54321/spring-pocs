@@ -13,9 +13,15 @@ public class ReqResLoggingInterceptor implements ClientHttpRequestInterceptor {
     public static final Logger log = LoggerFactory.getLogger(ReqResLoggingInterceptor.class);
     @Override
     public ClientHttpResponse intercept(HttpRequest request, byte[] body, ClientHttpRequestExecution execution) throws IOException {
-        log.info(new String(body));
+        log.atDebug().log(() -> new String(body));
         ClientHttpResponse clientHttpResponse = execution.execute(request, body);
-        log.info(new String(clientHttpResponse.getBody().readAllBytes()));
+        log.atInfo().log(() -> {
+            try {
+                return new String(clientHttpResponse.getBody().readAllBytes());
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
         return clientHttpResponse;
     }
 }
