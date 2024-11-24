@@ -20,5 +20,11 @@ spring:
 
 server:
   port: 8080
+  ssl:
+    enabled: true
+    key-alias: api-gateway
+    key-store-password: changeit
+    key-store: classpath:keystore.jks
+    key-store-type: PKCS12
 
 eureka.client.serviceUrl.defaultZone: http://localhost:8761/eureka/
